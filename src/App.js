@@ -1,27 +1,23 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Column from './Column';
 
-class App extends Component {
+class App extends React.Component {
+  constructor(props) {
+    super();
+    this.state = {
+      columns: [<Column />]
+    }
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+      this.state.columns.map((column, idx) => {
+        return (
+          <div>
+          {column}
+          </div>
+        )
+      })
+    )
   }
 }
 
