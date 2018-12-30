@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Card from './Card';
-import Form from './Components/Form';
 import Button from './Components/Button';
+import Form from './Components/Form';
+import './column.css';
+
+
 class Column extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      cards: ['one', 'two']
+      cards: ['Get Milk', 'Venmo Steven']
     }
     this.deleteCard = this.deleteCard.bind(this)
     this.addCard = this.addCard.bind(this)
@@ -25,10 +28,7 @@ class Column extends React.Component {
     return (
       this.state.cards.map((val, idx) => {
         return (
-          <ul>
-          <Card key={idx} value={val}/>
-          <Button value="del" handleClick={this.deleteCard}/>
-          </ul>
+          <Card key={idx} value={val} deleteCard={this.deleteCard}/>
         )
       })
     )
@@ -36,8 +36,11 @@ class Column extends React.Component {
   render() {
     return (
       <div>
-      <div> {this.renderCards()} </div>
-      <Form name="addCard" onSubmit={this.addCard}/>
+      <ul>
+      {this.renderCards()}
+      <li><Form name="addCard" onSubmit={this.addCard}/></li>
+      </ul>
+
       </div>
     )
   }
