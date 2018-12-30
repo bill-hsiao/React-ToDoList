@@ -12,9 +12,7 @@ class App extends React.Component {
     return (
       this.state.columns.map((column, idx) => {
         return (
-          <div>
-          {column}
-          </div>
+          <div id={idx}>{column}</div>
         )
       })
     )

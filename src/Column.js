@@ -2,7 +2,6 @@ import React from 'react';
 import Card from './Card';
 import Form from './Components/Form';
 import Button from './Components/Button';
-
 class Column extends React.Component {
   constructor(props) {
     super(props)

@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from './Button';
 
 class Form extends React.Component {
   constructor(props) {
@@ -8,24 +7,23 @@ class Form extends React.Component {
       value: ''
     }
     this.handleChange = this.handleChange.bind(this);
-    //this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(event) {
     this.setState({value: event.target.value})
   }
-  handleSubmit(props) {
-  //  let val = this.state.val;
-
-  //  this.props.onSubmit()
-    props.onSubmit(this.state.value)
-    //event.preventDefault();
+  handleSubmit(event) {
+    this.props.onSubmit(this.state.value)
+    event.preventDefault();
+    //clears the input field
+    this.setState({value: ''})
   }
   render () {
     return (
-      <div name={this.props.name}>
+      <form onSubmit={this.handleSubmit}>
           <input type="text" value={this.state.value} onChange={this.handleChange} />
-        <Button value={this.props.name} handleClick={this.handleSubmit(this.props)}/>
-        </div>
+        <input type="submit" value={this.props.name} />
+        </form>
     )
   }
 
